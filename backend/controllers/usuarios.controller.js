@@ -4,9 +4,11 @@ import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   try {
+    console.log("Datos recibidos:", req.body); // 🔍 Verifica qué datos está recibiendo
     const user = await createUser(req.body);
     res.status(201).json({ message: "Usuario registrado exitosamente" });
   } catch (error) {
+    console.error("Error en registerUser:", error); // 🔴 Muestra el error en la consola
     res.status(500).json({ error: error.message });
   }
 };
